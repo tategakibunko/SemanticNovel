@@ -1,0 +1,3 @@
+# SemanticNovel
+
+Work in progress.
