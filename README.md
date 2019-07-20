@@ -49,7 +49,7 @@ value: `'00:00'` - `23:00`
 value: `spring` | `summer` | `autumn` | `winter`
 
 ```javascript
-@scene({season:"09:00"}){ $time() }
+@scene({season:"summer"}){ $time() }
 ```
 
 ##### era
@@ -121,21 +121,21 @@ Set characters of novel.
 
 ```typescript
 {
-  [CharacterKey]: CharacterData
+  [characterKey]: characterData
 }
 ```
 
-#### CharacterKey
+#### characterKey
 
 Unique character key.
 
-#### CharacterData
+#### characterData
 
 ##### names
 
-First name, family name array.
+`first name`,` family name` array.
 
-Order is not specified([family name, first name], [first name, family name]).
+Order is not specified (both [`family name`, ` first name`] and  [`first name`, ` family name`] are OK).
 
 #### description
 
