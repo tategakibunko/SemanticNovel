@@ -2,13 +2,15 @@
 
 `SemanticNovel` is markup format for [TypeNovel](https://github.com/tategakibunko/TypeNovel) to write novel with plenty of semantic context informations.
 
-## Scene
+## Markup
 
-### summary
+### Scene
+
+#### summary
 
 Markup for writing scene.
 
-### markup map
+#### markup map
 
 ```javascript
 {
@@ -17,7 +19,7 @@ Markup for writing scene.
 }
 ```
 
-### precedent
+#### precedent
 
 Every semantic value starts with `'?'` is treated as `undefined` value in reader app.
 
@@ -32,9 +34,9 @@ Note that constraint value `'?'` in TypeNovel is not validation target of annota
 }
 ```
 
-### constraints
+#### constraints
 
-#### time
+##### time
 
 value: `'00:00'` - `23:00`
 
@@ -42,7 +44,7 @@ value: `'00:00'` - `23:00`
 @scene({time:"09:00"}){ $time() }
 ```
 
-#### season
+##### season
 
 value: `spring` | `summer` | `autumn` | `winter`
 
@@ -50,27 +52,25 @@ value: `spring` | `summer` | `autumn` | `winter`
 @scene({season:"09:00"}){ $time() }
 ```
 
-#### era
+##### era
 
 value: `ancient` | `modern` | `middle-ages` | `future`
 
-#### date
+##### date
 
 value: `01/01` - `12/31`
 
-## speak
-
-### summary
+### speak
 
 Markup for writing speech text.
 
-### format
+#### format
 
 ```javascript
 @speak('Michael Jackson'){ This is it! }
 ```
 
-### markup map
+#### markup map
 
 ```javascript
 {
@@ -82,11 +82,11 @@ Markup for writing speech text.
 }
 ```
 
-## External Data Schema
+## External data schema
 
 External data is stored as `data.json` in [TypeNovel](https://github.com/tategakibunko/TypeNovel).
 
-Usually, this data is extra resource used by reader app of TypeNovel.
+Usually, this data is used by reader app of TypeNovel.
 
 ### Title
 
@@ -100,7 +100,7 @@ Set novel title.
 
 ### Characters
 
-Set characters of your novel.
+Set characters of novel.
 
 #### Example
 
