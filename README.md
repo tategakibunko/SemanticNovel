@@ -2,36 +2,66 @@
 
 `SemanticNovel` is markup format for [TypeNovel](https://github.com/tategakibunko/TypeNovel) to write novel with plenty of semantic context informations.
 
-## Markup
+## precedent
 
-### Scene
-
-#### summary
-
-Markup for writing scene.
-
-#### markup map
+- Every semantic value that **is** `'?'` is not validated by TypeNovel compiler and treated as `undefined` value in reader app.
 
 ```javascript
-{
-  "tagName": "div",
-  "className": "scene"
+@scene({
+  time: '?' // time is ambigous and secret to reader app.
+}){
+  // time is not annotated in text-field, but it's not an error.
 }
 ```
 
-#### precedent
-
-Every semantic value starts with `'?'` is treated as `undefined` value in reader app.
-
-This is usefull when you want to annotate some constraint, but keep the value ambigous to readers or ui of reader app.
-
-Note that constraint value `'?'` in TypeNovel is not validation target of annotation, but constraint value that starts with '?'(like `?23:00`) is validation target of annotation.
+- Every semantic value **starts with** `'?'` is treated as `undefined` value in reader app.
 
 ```javascript
 @scene({
   time: '?23:30' // time is 23:30, but keep it secret to readers.
 }){
 }
+```
+
+This is usefull when you want to annotate some constraint, but keep the value ambigous to readers or ui of reader app.
+
+Note that constraint value `'?'` in TypeNovel is not validation target of annotation, but constraint value that starts with '?'(like `?23:00`) is validation target of annotation.
+
+<!----------------------------------------------------->
+
+## Markup
+
+You can see all markup definition in [init.tnconfig.json](https://github.com/tategakibunko/TypeNovel/blob/master/Tools/init.tnconfig.json).
+
+### @scene
+
+Markup to write some scene with some constraints.
+
+```javascript
+@scene({
+  place: "Japan",
+  season: "summer"
+}){
+  @scene({
+    date: "8/1"
+  }){
+    @scene({
+      time: "9:00"
+    }){
+       $time("good morning!")
+    }
+    @scene({
+      time: "12:00"
+    }){
+       $time("lunch time!")
+    }
+    @scene({
+      time: "22:00"
+    }){
+       $time("good night!")
+    }
+  } // date:"8/1"
+} // place:"Japan", season:"summer"
 ```
 
 #### constraints
@@ -52,35 +82,60 @@ value: `spring` | `summer` | `autumn` | `winter`
 @scene({season:"summer"}){ $time() }
 ```
 
-##### era
-
-value: `ancient` | `modern` | `middle-ages` | `future`
-
 ##### date
 
 value: `01/01` - `12/31`
 
-### speak
+<!----------------------------------------------------->
+
+
+### @speak
 
 Markup for writing speech text.
-
-#### format
 
 ```javascript
 @speak('Michael Jackson'){ This is it! }
 ```
 
-#### markup map
+### @tip
+
+Markup to write some `tip` content.
 
 ```javascript
-{
-  "tagName": "div",
-  "className": "speak",
-  "attributes": {
-    "data-character": "<arg1>"
-  }
-}
+@tip("IMO"){ Abbreviation of 'In My Opinion' }, it's correct.
 ```
+
+<!----------------------------------------------------->
+
+### @notes
+
+Markup to write some `notes`(footnote) content.
+
+```javascript
+This game is inspired by "街" @notes(){ 1998 Chunsoft.inc }
+```
+
+<!----------------------------------------------------->
+
+### $ruby
+
+Inline markup to write `ruby` in CJK text.
+
+```javascript
+$ruby("漢字", "かんじ")
+```
+
+<!----------------------------------------------------->
+
+### $tcy
+
+Inline markup to write `tate-chu-yoko` in `vertical` writing-mode.
+
+```javascript
+あのソフトは$tcy("UI")が素晴らしい。
+```
+
+<!----------------------------------------------------->
 
 ## External data schema
 
@@ -88,9 +143,9 @@ External data is stored as `data.json` in [TypeNovel](https://github.com/tategak
 
 Usually, this data is used by reader app of TypeNovel.
 
-### Title
+### title
 
-Set novel title.
+Title of the novel.
 
 ```javascript
 {
@@ -98,9 +153,19 @@ Set novel title.
 }
 ```
 
-### Characters
+### writingMode
 
-Set characters of novel.
+Writing mode of novel. `vertical-rl` or `horizontal-tb` is supported.
+
+```javascript
+{
+  writingMode: "horizontal-tb"
+}
+```
+
+### characters
+
+Characters of novel.
 
 #### Example
 
@@ -130,6 +195,8 @@ Set characters of novel.
 Unique character key.
 
 #### characterData
+
+Character detail.
 
 ##### names
 
