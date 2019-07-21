@@ -10,7 +10,7 @@
 @scene({
   time: '?' // time is ambigous and secret to reader app.
 }){
-  // time is not annotated in text-field, but it's not an error.
+  // time is not annotated in body field, but it's not an error.
 }
 ```
 
@@ -18,8 +18,10 @@
 
 ```javascript
 @scene({
-  time: '?23:30' // time is 23:30, but keep it secret to readers.
+  time: '?23:30' // time is 23:30, but keep it secret to reader app.
 }){
+  // Time constraint must be annotated in body field, otherwise it's an error.
+  $time("The night") has come.
 }
 ```
 
