@@ -41,6 +41,9 @@ You can see all markup definition in [init.tnconfig.json](https://github.com/tat
 
 ### @scene
 
+`@scens(<constraints>){ <scene-body> }`
+
+
 Markup to write some scene with some constraints.
 
 ```javascript
@@ -97,7 +100,11 @@ value: `01/01` - `12/31`
 
 ### @speak
 
+`@speak(<character-key>){ <speech-text-body> }`
+
 Markup for writing speech text.
+
+`character-key` must be defined in `data.json`(See **External Data Scheme** section).
 
 ```javascript
 @speak('Michael Jackson'){ This is it! }
@@ -108,6 +115,8 @@ Markup for writing speech text.
 `@sb-start(<character-key>, <image-key>){ <speech-text> }`
 
 Markup for writing speech text with speech-bubble and avatar image.
+
+`character-key` and `image-key` must be defined in `data.json`(See **External Data Scheme** section).
 
 `@sb-start` is displayed by [avatar, speech-bubble] order.
 
@@ -158,9 +167,9 @@ Inline markup to write `tate-chu-yoko` in `vertical` writing-mode.
 
 <!----------------------------------------------------->
 
-## External data schema
+## External Data Schema
 
-External data is stored as `data.json` in [TypeNovel](https://github.com/tategakibunko/TypeNovel).
+External data is stored as `data.json`.
 
 Usually, this data is used by reader app of TypeNovel.
 
