@@ -105,13 +105,17 @@ Markup for writing speech text.
 
 ### @sb-start, @sb-end
 
-`@sb-start(<character-key>){ <speech-text> }`
+`@sb-start(<character-key>, <image-key>){ <speech-text> }`
 
 Markup for writing speech text with speech-bubble and avatar image.
 
+`@sb-start` is displayed by [avatar, speech-bubble] order.
+
+`@sb-end` is displayed by [speech-bubble, avatar] order.
+
 ```javascript
-@sb-start('Michael'){ FOOooOOOoo!! }
-@sb-end('Jackson'){ Poooooooo!! }
+@sb-start('Michael', 'excited'){ FOOooOOOoo!! }
+@sb-end('Jackson', 'crazy'){ Poooooooo!! }
 ```
 
 ### @tip
