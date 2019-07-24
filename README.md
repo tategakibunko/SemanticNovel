@@ -112,7 +112,7 @@ Markup for writing speech text.
 
 ### @sb-start, @sb-end
 
-`@sb-start(<character-key>, <image-key>){ <speech-text> }`
+`@sb-start(<character-key>, <image-key>){ <speech-text-body> }`
 
 Markup for writing speech text with speech-bubble and avatar image.
 
