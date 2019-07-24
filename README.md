@@ -217,11 +217,11 @@ Writing mode of novel. `vertical-rl` or `horizontal-tb` is supported.
 
 ### displayTypeNovelError
 
-Whether reader app display the error of TypeNovel.
+Whether reader app displays the error of TypeNovel.
 
 ### enableSemanticUI
 
-Whether reader app enables the semantic info of the novel on UI.
+Whether reader app enables semantic info on reader UI.
 
 ### speechAvatarSize
 
