@@ -215,12 +215,6 @@ Homepage address of author(or novel).
 
 Writing mode of novel. `vertical-rl` or `horizontal-tb` is supported.
 
-```javascript
-{
-  writingMode: "horizontal-tb"
-}
-```
-
 ### displayTypeNovelError
 
 Whether reader app display the error of TypeNovel.
