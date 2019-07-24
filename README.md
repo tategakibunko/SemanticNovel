@@ -2,7 +2,11 @@
 
 `SemanticNovel` is markup format for [TypeNovel](https://github.com/tategakibunko/TypeNovel) to write novel with plenty of semantic context informations.
 
-## precedent
+## Supported Application
+
+- [TypeNovelReader](https://github.com/tategakibunko/TypeNovelReader)
+
+## Preface
 
 - Every semantic value that **is** `'?'` is not validated by TypeNovel compiler and treated as `undefined` value in reader app.
 
@@ -14,7 +18,7 @@
 }
 ```
 
-- Every semantic value **starts with** `'?'` is treated as `undefined` value in reader app.
+- Every semantic value **starts with** `'?'` is validated by TypeNovel compiler but treated as `undefined` value in reader app.
 
 ```javascript
 @scene({
@@ -99,6 +103,17 @@ Markup for writing speech text.
 @speak('Michael Jackson'){ This is it! }
 ```
 
+### @sb-start, @sb-end
+
+`@sb-start(<character-key>){ <speech-text> }`
+
+Markup for writing speech text with speech-bubble and avatar image.
+
+```javascript
+@sb-start('Michael'){ FOOooOOOoo!! }
+@sb-end('Jackson'){ Poooooooo!! }
+```
+
 ### @tip
 
 Markup to write some `tip` content.
@@ -145,15 +160,52 @@ External data is stored as `data.json` in [TypeNovel](https://github.com/tategak
 
 Usually, this data is used by reader app of TypeNovel.
 
+### example
+
+```javascript
+{
+  "title": "Sample Novel",
+  "author": "foo bar",
+  "email": "foo@bar.com",
+  "homepage": "https://foo.bar.com",
+  "writingMode": "vertical-rl",
+  "displayTypeNovelError": true,
+  "enableSemanticUI": true,
+  "speechAvatarSize": 50,
+  "characters": {
+    "john": {
+      "names": ["John", "Adams"],
+      "images": {
+        "normal": "images/avatar2.svg"
+      },
+      "description": "Desription of John Adams"
+    },
+    "taro": {
+      "names": ["山田", "太郎"],
+      "images": {
+        "normal": "images/avatar1.svg"
+      },
+      "description": "山田太郎の詳細をここに書く"
+    }
+  }
+}
+```
+
 ### title
 
 Title of the novel.
 
-```javascript
-{
-  title: "This is my novel title"
-}
-```
+### auhor
+
+Author of the novel.
+
+### email
+
+Email address of author.
+
+### homepage
+
+Homepage address of author(or novel).
 
 ### writingMode
 
@@ -165,40 +217,42 @@ Writing mode of novel. `vertical-rl` or `horizontal-tb` is supported.
 }
 ```
 
+### displayTypeNovelError
+
+Whether reader app display the error of TypeNovel.
+
+### enableSemanticUI
+
+Whether reader app enables the semantic info of the novel on UI.
+
+### speechAvatarSize
+
+Avatar size of `@sb-start` or `@sb-end` tag.
+
 ### characters
 
 Characters of novel.
 
-#### Example
-
 ```javascript
-"characters": {
-  "taro": {
-    "names": ["山田", "太郎"],
-    "description": "desc of taro"
-  },
-  "michael": {
-    "names": ["Michael", "Jackson"],
-    "description": "desc of michael"
+  "characters": {
+    "john": {
+      "names": ["John", "Adams"],
+      "images": {
+        "normal": "images/avatar2.svg"
+      },
+      "description": "Desription of John Adams"
+    },
+    "taro": {
+      "names": ["山田", "太郎"],
+      "images": {
+        "normal": "images/avatar1.svg"
+      },
+      "description": "山田太郎の詳細をここに書く"
+    }
   }
-}
 ```
 
-#### Schema
-
-```typescript
-{
-  [characterKey]: characterData
-}
-```
-
-#### characterKey
-
-Unique character key.
-
-#### characterData
-
-Character detail.
+#### Schema of each character
 
 ##### names
 
@@ -209,3 +263,11 @@ Order is not specified (both [`family name`, ` first name`] and  [`first name`, 
 #### description
 
 Description of character.
+
+#### images
+
+Images of character. Each images is referenced by `imageKey`.
+
+For example, image path(`images/avatar1.svg`) is referenced by imageKey(`normal`) in `taro.images`.
+
+
