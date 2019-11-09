@@ -37,7 +37,7 @@ Note that constraint value `'?'` in TypeNovel is not validation target of annota
 
 ## Markup
 
-You can see all markup definition in [init.tnconfig.json](https://github.com/tategakibunko/TypeNovel/blob/master/Tools/init.tnconfig.json).
+You can see all markup definition in `DefaultTnConfig` in [settings.ts](https://github.com/tategakibunko/TypeNovel/blob/master/src/settings.ts).
 
 ### @scene
 
