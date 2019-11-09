@@ -112,7 +112,7 @@ Markup for writing speech text.
 
 In TypeNovelReader, this is displayed like this.
 
-![speak](./media/images/speak.speak.png)
+![speak](./media/images/speak.png)
 
 ### @sb-start, @sb-end
 
