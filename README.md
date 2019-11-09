@@ -110,6 +110,10 @@ Markup for writing speech text.
 @speak('Michael Jackson'){ This is it! }
 ```
 
+In TypeNovelReader, this is displayed like this.
+
+![speak](./media/images/speak.speak.png)
+
 ### @sb-start, @sb-end
 
 `@sb-start(<character-key>, <image-key>){ <speech-text-body> }`
@@ -126,6 +130,10 @@ Markup for writing speech text with speech-bubble and avatar image.
 @sb-start('Michael', 'excited'){ FOOooOOOoo!! }
 @sb-end('Jackson', 'crazy'){ Poooooooo!! }
 ```
+
+In TypeNovelReader, this is displayed like this.
+
+![sb-start-end](./media/images/sb-start-end.png)
 
 ### @tip
 
