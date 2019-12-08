@@ -1,4 +1,4 @@
-# SemanticNovel
+# Semantic Novel
 
 `SemanticNovel` is markup format for [TypeNovel](https://github.com/tategakibunko/TypeNovel) to write novel with plenty of semantic context informations.
 
